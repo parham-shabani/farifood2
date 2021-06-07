@@ -2,19 +2,20 @@ package ir.ac.kntu;
 
 import java.util.Scanner;
 
-public class AdminMenu extends Menu {
+public class CustomerMenu extends Menu {
 
-    public AdminMenu() {
+    public CustomerMenu() {
     }
 
-    private final Scanner scanner = new Scanner(System.in);
-    private final ListOfRestaurants lor = new ListOfRestaurants();
-    private final Foods foods = new Foods();
+    private ListOfRestaurants lor = new ListOfRestaurants();
+    private Scanner scanner = new Scanner(System.in);
+    private Foods foods = new Foods();
+    private MyOrders myOrders = new MyOrders();
 
     @Override
     public void menu() {
         System.out.println("1: Open Restaurants");
-        System.out.println("2: Setting");
+        System.out.println("2: My last orders");
         System.out.println("3: Delivery menu");
         System.out.println("4: Restaurant's information");
         System.out.println("5: Exit");
@@ -35,12 +36,16 @@ public class AdminMenu extends Menu {
                     if (lor.getRest4Start().isBefore(lor.getZdt()) && lor.getRest4End().isAfter(lor.getZdt())) {
                         System.out.println("4: " + lor.getRestaurants().get(3).getNameOfRestaurant());
                     }
+                    else {
+                        System.out.println("All of restaurants are close");
+                        return;
+                    }
                     int s = scanner.nextInt();
                     buyFood(s);
                     break;
                 }
                 case 2: {
-                    //it didnt complete
+                    lastOrders();
                     break;
                 }
                 case 3: {
@@ -60,7 +65,6 @@ public class AdminMenu extends Menu {
                     break;
                 }
                 default:
-                    t = 0;
                     break;
             }
         }
@@ -72,6 +76,7 @@ public class AdminMenu extends Menu {
                 System.out.println("1:" + foods.getFoodNames().get(1) + " -> Price:" + foods.getKfcFoodPrices().get(1));
                 System.out.println("2:" + foods.getFoodNames().get(2) + " -> Price:" + foods.getKfcFoodPrices().get(2));
                 int myfood = scanner.nextInt();
+                myOrders.add(foods.getFoodNames().get(myfood));
                 System.out.println("You bought " + foods.getFoodNames().get(myfood) + ". Your order has been registered. dar hale pardazesh. please wait...");
                 canDeliverKFC(lor.getRestaurants().get(0));
                 return;
@@ -83,6 +88,7 @@ public class AdminMenu extends Menu {
                 System.out.println("2:" + foods.getFoodNames().get(1) + " -> Price:" + foods.getMcDonaldFoodPrices().get(1));
                 System.out.println("3:" + foods.getFoodNames().get(2) + " -> Price:" + foods.getMcDonaldFoodPrices().get(2));
                 int myfood = scanner.nextInt();
+                myOrders.add(foods.getFoodNames().get(myfood - 1));
                 System.out.println("You bought " + foods.getFoodNames().get(myfood - 1) + ". Your order has been registered. dar hale pardazesh. please wait...");
                 canDelivermcDonald(lor.getRestaurants().get(1));
                 return;
@@ -94,6 +100,7 @@ public class AdminMenu extends Menu {
                 System.out.println("2:" + foods.getFoodNames().get(1) + " -> Price:" + foods.getAtawichFoodPrices().get(1));
                 System.out.println("3+" + foods.getFoodNames().get(2) + " -> Price:" + foods.getAtawichFoodPrices().get(2));
                 int myfood = scanner.nextInt();
+                myOrders.add(foods.getFoodNames().get(myfood - 1));
                 System.out.println("You bought " + foods.getFoodNames().get(myfood - 1) + ". Your order has been registered. dar hale pardazesh. please wait...");
                 canDeliverAtawich(lor.getRestaurants().get(2));
                 return;
@@ -106,9 +113,11 @@ public class AdminMenu extends Menu {
                 int myfood = scanner.nextInt();
                 if (myfood == 1) {
                     System.out.println("You bought" + foods.getFoodNames().get(0) + ". Your order has been registered. dar hale pardazesh. please wait...");
+                    myOrders.add(foods.getFoodNames().get(0));
                 }
                 if (myfood == 2) {
-                    System.out.println("You bought" + foods.getFoodNames().get(3) + ". Your order has been registered. dar hale pardazesh.");
+                    System.out.println("You bought" + foods.getFoodNames().get(3) + ". Your order has been registered. dar hale pardazesh. please wait...");
+                    myOrders.add(foods.getFoodNames().get(3));
                 }
                 canDeliverFerikasif(lor.getRestaurants().get(3));
                 return;
@@ -116,6 +125,13 @@ public class AdminMenu extends Menu {
         } else {
             System.out.println("Invalid input");
         }
+    }
+
+    public void lastOrders() {
+        for (int i = 0; i < myOrders.getMyOrders().size(); i++) {
+            System.out.println(myOrders.getMyOrders().get(i));
+        }
+
     }
 
     public void showRestaurantInformation(int vurudi) {

@@ -10,7 +10,7 @@ public class Main {
         String password;
         String username;
         ArrayList<String> userName = new ArrayList<>();
-        ArrayList<String> passWord = new ArrayList<>();
+        ArrayList<String> phoneNumber = new ArrayList<>();
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("1: Admin's Menu");
@@ -35,13 +35,15 @@ public class Main {
             System.out.println("Enter your address");
             userName.add(scanner.next());
             System.out.println("Enter your phone number");
-            userName.add(scanner.next());
+            phoneNumber.add(scanner.next());
             customer.setAddress(userName);
-            customer.setAddress(passWord);
-
+            customer.setPhoneNumber(phoneNumber);
+            CustomerMenu customerMenu = new CustomerMenu();
+            customerMenu.menu();
         }
         if (whoAreYou == 3) {
-
+            RestaurantAdminMenu restaurantAdminMenu = new RestaurantAdminMenu();
+            restaurantAdminMenu.menu();
         }
     }
 }
