@@ -13,7 +13,7 @@ public class RestaurantAdminMenu extends Menu {
 
     @Override
     public void menu() {
-        for (int i = 1 ; i <= listOfRestaurants.getRestaurants().size(); i++) {
+        for (int i = 1; i <= listOfRestaurants.getRestaurants().size(); i++) {
             System.out.println(i +" : " + listOfRestaurants.getRestaurants().get(i-1).getNameOfRestaurant());
         }
         int input = scanner.nextInt();
@@ -26,28 +26,28 @@ public class RestaurantAdminMenu extends Menu {
 
         switch (input) {
             case 1: {
-                for (int i = 0; i < restaurantAdmin.getUsernameKFC().size() ; i++) {
+                for (int i = 0; i < restaurantAdmin.getUsernameKFC().size(); i++) {
                     if (userName.equals(restaurantAdmin.getUsernameKFC().get(i)) && password.equals(restaurantAdmin.getPasswordKFC().get(i))) {
                         change(input);
                     }
                 }
             }
             case 2: {
-                for (int i = 0; i < restaurantAdmin.getUsernameMCDONALD().size() ; i++) {
+                for (int i = 0; i < restaurantAdmin.getUsernameMCDONALD().size(); i++) {
                     if (userName.equals(restaurantAdmin.getUsernameMCDONALD().get(i)) && password.equals(restaurantAdmin.getPasswordMCDONALD().get(i))) {
                         change(input);
                     }
                 }
             }
             case 3: {
-                for (int i = 0; i < restaurantAdmin.getUsernameATAWICH().size() ; i++) {
+                for (int i = 0; i < restaurantAdmin.getUsernameATAWICH().size(); i++) {
                     if (userName.equals(restaurantAdmin.getUsernameATAWICH().get(i)) && password.equals(restaurantAdmin.getPasswordATAWICH().get(i))) {
                         change(input);
                     }
                 }
             }
             case 4: {
-                for (int i = 0; i < restaurantAdmin.getUsernameKFC().size() ; i++) {
+                for (int i = 0; i < restaurantAdmin.getUsernameKFC().size(); i++) {
                     if (userName.equals(restaurantAdmin.getUsernameKFC().get(i)) && password.equals(restaurantAdmin.getPasswordKFC().get(i))) {
                         change(input);
                     }
