@@ -122,6 +122,7 @@ public class ListOfRestaurants {
     }
 
 
+
     public ArrayList<Restaurant> getRestaurants() {
         return restaurants;
     }

@@ -35,6 +35,9 @@ public class AdminMenu extends Menu {
                 if (lor.getRest4Start().isBefore(lor.getZdt()) && lor.getRest4End().isAfter(lor.getZdt())) {
                     System.out.println("4: " + lor.getRestaurants().get(3).getNameOfRestaurant());
                 }
+                for (int i = 0; i < los.getSuperMarkets().size(); i++) {
+                    System.out.println((i + 5) + ": " + los.getSuperMarkets().get(i).getName());
+                }
                 int s = scanner.nextInt();
                 buyFood(s);
                 break;

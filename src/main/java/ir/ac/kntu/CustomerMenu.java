@@ -15,58 +15,61 @@ public class CustomerMenu extends Menu {
 
     @Override
     public void menu() {
-        System.out.println("1: Open Restaurants");
-        System.out.println("2: My last orders");
-        System.out.println("3: Delivery menu");
-        System.out.println("4: Restaurant's information");
-        System.out.println("5: Exit");
-        int input = scanner.nextInt();
+        int t = 1;
+        while (t == 1) {
+            System.out.println("1: Open Restaurants");
+            System.out.println("2: My last orders");
+            System.out.println("3: Delivery menu");
+            System.out.println("4: Restaurant's information");
+            System.out.println("5: Exit");
+            int input = scanner.nextInt();
 
-        switch (input) {
-            case 1: {
-                if ((lor.getRest1Startfd().isBefore(lor.getZdt()) && lor.getRest1Endfd().isAfter(lor.getZdt())) || (lor.getRest1Startsd().isBefore(lor.getZdt()) && lor.getRest1Endsd().isAfter(lor.getZdt()))) {
-                    System.out.println("1: " + lor.getRestaurants().get(0).getNameOfRestaurant());
-                }
-                if ((lor.getRest2Startfd().isBefore(lor.getZdt()) && lor.getRest2Endfd().isAfter(lor.getZdt())) || (lor.getRest2Startsd().isBefore(lor.getZdt()) && lor.getRest2Endsd().isAfter(lor.getZdt()))) {
-                    System.out.println("2: " + lor.getRestaurants().get(1).getNameOfRestaurant());
-                }
-                if ((lor.getRest3Startfd().isBefore(lor.getZdt()) && lor.getRest3Endfd().isAfter(lor.getZdt())) || (lor.getRest3Startsd().isBefore(lor.getZdt()) && lor.getRest3Endsd().isAfter(lor.getZdt()))) {
-                    System.out.println("3: " + lor.getRestaurants().get(2).getNameOfRestaurant());
-                }
-                if (lor.getRest4Start().isBefore(lor.getZdt()) && lor.getRest4End().isAfter(lor.getZdt())) {
-                    System.out.println("4: " + lor.getRestaurants().get(3).getNameOfRestaurant());
-                }
+            switch (input) {
+                case 1: {
+                    if ((lor.getRest1Startfd().isBefore(lor.getZdt()) && lor.getRest1Endfd().isAfter(lor.getZdt())) || (lor.getRest1Startsd().isBefore(lor.getZdt()) && lor.getRest1Endsd().isAfter(lor.getZdt()))) {
+                        System.out.println("1: " + lor.getRestaurants().get(0).getNameOfRestaurant());
+                    }
+                    if ((lor.getRest2Startfd().isBefore(lor.getZdt()) && lor.getRest2Endfd().isAfter(lor.getZdt())) || (lor.getRest2Startsd().isBefore(lor.getZdt()) && lor.getRest2Endsd().isAfter(lor.getZdt()))) {
+                        System.out.println("2: " + lor.getRestaurants().get(1).getNameOfRestaurant());
+                    }
+                    if ((lor.getRest3Startfd().isBefore(lor.getZdt()) && lor.getRest3Endfd().isAfter(lor.getZdt())) || (lor.getRest3Startsd().isBefore(lor.getZdt()) && lor.getRest3Endsd().isAfter(lor.getZdt()))) {
+                        System.out.println("3: " + lor.getRestaurants().get(2).getNameOfRestaurant());
+                    }
+                    if (lor.getRest4Start().isBefore(lor.getZdt()) && lor.getRest4End().isAfter(lor.getZdt())) {
+                        System.out.println("4: " + lor.getRestaurants().get(3).getNameOfRestaurant());
+                    }
 
-                for (int i = 0; i < los.getSuperMarkets().size(); i++) {
-                    System.out.println((i + 5) + ": " + los.getSuperMarkets().get(i).getName());
+                    for (int i = 0; i < los.getSuperMarkets().size(); i++) {
+                        System.out.println((i + 5) + ": " + los.getSuperMarkets().get(i).getName());
+                    }
+                    int s = scanner.nextInt();
+                    buyFood(s);
+                    break;
                 }
-                int s = scanner.nextInt();
-                buyFood(s);
-                break;
-            }
-            case 2: {
-                lastOrders();
-                break;
-            }
-            case 3: {
-                courier();
-                break;
-            }
-            case 4: {
-                for (int j = 1; j <= lor.getRestaurants().size(); j++) {
-                    System.out.println(j + " : " + lor.getRestaurants().get(j - 1).getNameOfRestaurant());
+                case 2: {
+                    lastOrders();
+                    break;
                 }
-                int w = scanner.nextInt();
-                showRestaurantInformation(w);
-                break;
+                case 3: {
+                    courier();
+                    break;
+                }
+                case 4: {
+                    for (int j = 1; j <= lor.getRestaurants().size(); j++) {
+                        System.out.println(j + " : " + lor.getRestaurants().get(j - 1).getNameOfRestaurant());
+                    }
+                    int w = scanner.nextInt();
+                    showRestaurantInformation(w);
+                    break;
+                }
+                case 5: {
+                    t = 0;
+                    break;
+                }
+                default:
+                    break;
             }
-            case 5: {
-                break;
-            }
-            default:
-                break;
         }
-
     }
 
     public void buyFood(int input) {
@@ -97,7 +100,7 @@ public class CustomerMenu extends Menu {
             if ((lor.getRest3Startfd().isBefore(lor.getZdt()) && lor.getRest3Endfd().isAfter(lor.getZdt())) || (lor.getRest3Endsd().isBefore(lor.getZdt()) && lor.getRest3Endsd().isAfter(lor.getZdt()))) {
                 System.out.println("1:" + foods.getFoodNames().get(0) + " -> Price:" + foods.getAtawichFoodPrices().get(0));
                 System.out.println("2:" + foods.getFoodNames().get(1) + " -> Price:" + foods.getAtawichFoodPrices().get(1));
-                System.out.println("3+" + foods.getFoodNames().get(2) + " -> Price:" + foods.getAtawichFoodPrices().get(2));
+                System.out.println("3:" + foods.getFoodNames().get(2) + " -> Price:" + foods.getAtawichFoodPrices().get(2));
                 int myfood = scanner.nextInt();
                 myOrders.add(foods.getFoodNames().get(myfood - 1));
                 System.out.println("You bought " + foods.getFoodNames().get(myfood - 1) + ". Your order has been registered. dar hale pardazesh. please wait...");
@@ -127,6 +130,7 @@ public class CustomerMenu extends Menu {
                 System.out.print((j + 1) + ": " + los.getSuperMarkets().get(0).getProducts().get(j));
                 System.out.println("  stocks: " + los.getSuperMarkets().get(0).getStock().get(j));
             }
+            System.out.println("");
             return;
         }
         if (input == 6) {
@@ -134,6 +138,7 @@ public class CustomerMenu extends Menu {
                 System.out.print((i + 1) + ": " + los.getSuperMarkets().get(1).getProducts().get(i));
                 System.out.println("  stocks: " + los.getSuperMarkets().get(1).getStock().get(i));
             }
+            System.out.println("");
             return;
         } else {
             System.out.println("Invalid input");

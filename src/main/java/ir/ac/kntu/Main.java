@@ -42,6 +42,21 @@ public class Main {
             customerMenu.menu();
         }
         if (whoAreYou == 3) {
+//            System.out.println("Enter username: ");
+//            String usrname = scanner.next();
+//            System.out.println("Enter password: ");
+//            String passwrd = scanner.next();
+//            RestaurantAdmin restaurantAdmin = new RestaurantAdmin();
+//            for (int i = 0; i < 5; i++) { //each restaurant has 5 admins maximum
+//                if (((usrname.equals(restaurantAdmin.getUsernameKFC().get(i))) && (passwrd.equals(restaurantAdmin.getPasswordKFC().get(i)))) ||
+//                        ((usrname.equals(restaurantAdmin.getUsernameATAWICH().get(i))) && passwrd.equals(restaurantAdmin.getPasswordATAWICH().get(i))) ||
+//                        ((usrname.equals(restaurantAdmin.getUsernameMCDONALD().get(i)) && passwrd.equals(restaurantAdmin.getPasswordMCDONALD().get(i)))) ||
+//                        ((usrname.equals(restaurantAdmin.getUsernameFERIKASIF().get(i))) && passwrd.equals(restaurantAdmin.getPasswordFERIKASIF().get(i)))
+//                ) {
+//                    RestaurantAdminMenu restaurantAdminMenu = new RestaurantAdminMenu();
+//                    restaurantAdminMenu.menu();
+////                }
+////            }
             RestaurantAdminMenu restaurantAdminMenu = new RestaurantAdminMenu();
             restaurantAdminMenu.menu();
         }

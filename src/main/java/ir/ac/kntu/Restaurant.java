@@ -43,4 +43,19 @@ public class Restaurant {
         return restaurantScore;
     }
 
+    public void setNameOfRestaurant(String nameOfRestaurant) {
+        this.nameOfRestaurant = nameOfRestaurant;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setPriceType(PriceType priceType) {
+        this.priceType = priceType;
+    }
+
+    public void setRestaurantScore(ArrayList<Integer> restaurantScore) {
+        this.restaurantScore = restaurantScore;
+    }
 }
